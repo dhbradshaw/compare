@@ -33,13 +33,17 @@
         const e0 = document.getElementById('v0');
         const e1 = document.getElementById('v1');
 
-        const width = (window.innerWidth / 2 - 10);
-        e0.width = width;
-        e1.width = width;
+        window.onresize = updateWindowDimensions;
 
-        const height = (window.innerHeight - 30);
-        e0.height = height;
-        e1.height = height;
+        function updateWindowDimensions() {
+            const width = (window.innerWidth / 2 - 10);
+            e0.width = width;
+            e1.width = width;
+
+            const height = (window.innerHeight - 30);
+            e0.height = height;
+            e1.height = height;
+        }
 
         const [src0, src1] = document.location.hash.slice(1).split('||');
         if (src0) {
@@ -48,6 +52,8 @@
         if (src1) {
             e1.src = src1;
         }
+
+        updateWindowDimensions();
     </script>
 </body>
 
